@@ -1,0 +1,410 @@
+@extends('layouts.app')
+
+@section('content')
+<style media="screen">
+.animated{
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+animation-iteration-count: infinite;
+-webkit-animation-iteration-count: infinite;
+-moz-animation-iteration-count: infinite;
+}
+.bounce {
+    -webkit-animation-name: bounce;
+	-moz-animation-name: bounce;
+    animation-name: bounce;
+}
+.tooltipiob{
+	box-shadow: 1px 2px 2px #727272;
+	-webkit-box-shadow: 1px 2px 2px #727272;
+	-moz-box-shadow: 1px 2px 2px #727272;
+}
+.tooltipiob {
+    position: absolute;
+    top: -47px;
+    width: 158px;
+    background: #09ceff;
+    color: #fff;
+    padding: 3px 11px;
+    left: -12px;
+    border-radius: 4px;
+	width: 185px;
+height: 31px;
+}
+</style>
+  <div class="breadcrumb breadcrumb-1 pos-center">
+  <h1>ROOMS</h1>
+</div>
+<div class="content"><!-- Content Section -->
+  <div class="container margint60">
+    <div class="row">
+      <div class="col-lg-12 marginb20"><!-- Room Sort -->
+        <div class="sortby clearfix">
+
+          <div class="pull-right sort-icon">
+            <a class="fright" href="therooms"><img src="theme/temp/grid-icon.png" alt=""></a>
+            <a class="fright" href="availrooms"><img src="theme/temp/list-icon.png" alt=""></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9"><!-- Explore Rooms -->
+        <table>
+          <tr class="products-title">
+            <td class="table-products-image pos-center"><h6>IMAGE</h6></td>
+            <td class="table-products-name pos-center"><h6>ROOM NAME</h6></td>
+            <td class="table-products-price pos-center"><h6>PRICE</h6></td>
+            <td class="table-products-total pos-center"><h6>PURCHASE</h6></td>
+          </tr>
+
+
+          <tr class="table-products-list pos-center" >
+            <td class="products-image-table" style="padding-top:0px"><img alt="Products Image 1" src="/storage/cover_images/{{ isset($standard->cover_image) ? $standard->cover_image : "Standard-room_1543751302.jpg"}}" class="img-responsive"></td>
+            <td class="title-table">
+              <div class="room-details-list clearfix">
+                <div class="pull-left">
+                  <h5>Standard Room</h5>
+                </div>
+                <div class="pull-left room-rating">
+                  <ul>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star inactive"></i></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="list-room-icons clearfix">
+                <ul>
+                  <li title="Free Wifi"><i class="fa fa-wifi"></i></li>
+                  <li title="Parking Space"><i class="fa fa-car"></i></li>
+                  <li title="Airconditioned Room"><i class="fa fa-snowflake-o"></i></li>
+                  <li title="Televisions"><i class="fa fa-television"></i></li>
+                  <li title="Shower"><i class="fa fa-shower"></i></li>
+                  <li title="Breakfast"><i class="fa fa-spoon"></i></li>
+                </ul>
+              </div>
+              <p style="margin:0px">Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque orla porta felis euismodnean eu at ero <a class="active-color" href="standard">[...]</a> </p>
+              <div class="row">
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('adult', 'No. of Adult: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_adult', array('1' => '1', '2' => '2'), null, ['required', 'tabindex' => '9']) }}
+              </div>
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('children', 'No. of Children: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_children', array('0' => '0','1' => '1'), null, ['required', 'tabindex' => '10']) }}
+              </div>
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('children', 'No. of rooms: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_children', array('0' => '0','1' => '1'), null, ['required', 'tabindex' => '10']) }}
+              </div>
+              </div>
+            </td>
+            <td><h3>P2,000</h3>
+            </td>
+            <td>
+              <div class="pull-right">
+                <h4 style="color:red" >5 Rooms Available</h4>
+              </div>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <div  class="button-style-1" style="padding-bottom:80px" style="padding-bottom:40px"><a href="#"><i class="fa fa-calendar"></i><span class="mobile-visibility">BOOK NOW</span></a></div>
+            </td>
+          </tr>
+
+
+          <tr class="table-products-list pos-center">
+            <td class="products-image-table" style="padding-top:0px"><img alt="Products Image 2" src="/storage/cover_images/{{ isset($quad->cover_image) ? $quad->cover_image : "Quad-room_1543751224.jpg"}}" class="img-responsive"></td>
+            <td class="title-table">
+              <div class="room-details-list clearfix">
+                <div class="pull-left">
+                  <h5>Quad Room</h5>
+                </div>
+                <div class="pull-left room-rating">
+                  <ul>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star inactive"></i></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="list-room-icons clearfix">
+                <ul>
+                  <li title="Free Wifi"><i class="fa fa-wifi"></i></li>
+                  <li title="Parking Space"><i class="fa fa-car"></i></li>
+                  <li title="Airconditioned Room"><i class="fa fa-snowflake-o"></i></li>
+                  <li title="Televisions"><i class="fa fa-television"></i></li>
+                  <li title="Shower"><i class="fa fa-shower"></i></li>
+                  <li title="Breakfast"><i class="fa fa-spoon"></i></li>
+                </ul>
+              </div>
+              <p>Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque orla porta felis euismodnean eu at ero <a class="active-color" href="quad">[...]</a></p>
+              <div class="row">
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('adult', 'No. of Adult: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_adult', array('1' => '1', '2' => '2', '3' => '3', '4' => '4'), null, ['required', 'tabindex' => '9']) }}
+              </div>
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('children', 'No. of Children: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_children', array('0' => '0','1' => '1', '2' => '2', '3' => '3'), null, ['required', 'tabindex' => '10']) }}
+              </div>
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('children', 'No. of rooms: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_children', array('0' => '0','1' => '1'), null, ['required', 'tabindex' => '10']) }}
+              </div>
+              </div>
+            </td>
+            <td><h3>P2,500</h3></td>
+            <td>
+              <div class="pull-right">
+                <h4 style="color:red"> Rooms Available</h4>
+              </div>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <div  class="button-style-1" style="padding-bottom:80px"><a href="#"><i class="fa fa-calendar"></i><span class="mobile-visibility">BOOK NOW</span></a></div>
+            </td>
+          </tr>
+
+
+          <tr class="table-products-list pos-center">
+            <td class="products-image-table" style="padding-top:0px"><img alt="Products Image 1" src="/storage/cover_images/{{ isset($family->cover_image) ? $family->cover_image : "Family-room_1543751238.jpg"}}" class="img-responsive"></td>
+            <td class="title-table">
+              <div class="room-details-list clearfix">
+                <div class="pull-left">
+                  <h5>Family Room</h5>
+                </div>
+                <div class="pull-left room-rating">
+                  <ul>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star inactive"></i></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="list-room-icons clearfix">
+                <ul>
+                  <li title="Free Wifi"><i class="fa fa-wifi"></i></li>
+                  <li title="Parking Space"><i class="fa fa-car"></i></li>
+                  <li title="Airconditioned Room"><i class="fa fa-snowflake-o"></i></li>
+                  <li title="Televisions"><i class="fa fa-television"></i></li>
+                  <li title="Shower"><i class="fa fa-shower"></i></li>
+                  <li title="Breakfast"><i class="fa fa-spoon"></i></li>
+                </ul>
+              </div>
+              <p>Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque orla porta felis euismodnean eu at ero <a class="active-color" href="family">[...]</a></p>
+              <div class="row">
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('adult', 'No. of Adult: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_adult', array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'), null, ['required', 'tabindex' => '9']) }}
+              </div>
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('children', 'No. of Children: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_children', array('0' => '0','1' => '1', '2' => '2', '3' => '3', '4' => '4'), null, ['required', 'tabindex' => '10']) }}
+              </div>
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('children', 'No. of rooms: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_children', array('0' => '0','1' => '1'), null, ['required', 'tabindex' => '10']) }}
+              </div>
+              </div>
+            </td>
+            <td><h3>P3,000</h3></td>
+            <td>
+              <div class="pull-right">
+                <h4 style="color:red"> Rooms Available</h4>
+              </div>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <div  class="button-style-1" style="padding-bottom:80px"><a href="#"><i class="fa fa-calendar"></i><span class="mobile-visibility">BOOK NOW</span></a></div></td>
+          </tr>
+
+
+          <tr class="table-products-list pos-center">
+            <td class="products-image-table" style="padding-top:0px"><img alt="Products Image 2" src="/storage/cover_images/{{ isset($barkada->cover_image) ? $barkada->cover_image : "Barkada-room_1543751254.jpg"}}" class="img-responsive"></td>
+            <td class="title-table">
+              <div class="room-details-list clearfix">
+                <div class="pull-left">
+                  <h5>Barkada's Room</h5>
+                </div>
+                <div class="pull-left room-rating">
+                  <ul>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star inactive"></i></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="list-room-icons clearfix">
+                <ul>
+                  <li title="Free Wifi"><i class="fa fa-wifi"></i></li>
+                  <li title="Parking Space"><i class="fa fa-car"></i></li>
+                  <li title="Airconditioned Room"><i class="fa fa-snowflake-o"></i></li>
+                  <li title="Televisions"><i class="fa fa-television"></i></li>
+                  <li title="Shower"><i class="fa fa-shower"></i></li>
+                  <li title="Breakfast"><i class="fa fa-spoon"></i></li>
+                </ul>
+              </div>
+              <p>Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque orla porta felis euismodnean eu at ero <a class="active-color" href="barkada">[...]</a></p>
+              <div class="row">
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4 li-input">
+                  {{ Form::label('adult', 'No. of Adult: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_adult', array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12', '13' => '13', '14' => '14', '15' => '15', '16' => '16'), null, ['required', 'tabindex' => '9']) }}
+              </div>
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4 li-input">
+                  {{ Form::label('children', 'No. of Children: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_children', array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12', '13' => '13', '14' => '14', '15' => '15'), null, ['required', 'tabindex' => '10']) }}
+              </div>
+              <div class="pull-left col-xs-12 col-sm-4 col-md-4">
+                  {{ Form::label('children', 'No. of rooms: ',['style' => 'color:black']) }}
+                  {{ Form::select('n_children', array('0' => '0','1' => '1'), null, ['required', 'tabindex' => '10']) }}
+              </div>
+              </div>
+            </td>
+            <td><h3>P8,000</h3></td>
+            <td>
+              <div class="pull-right">
+                <h4 style="color:red" > Rooms Available</h4>
+              </div>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <div  class="button-style-1" style="padding-bottom:80px"><a href="#"><i class="fa fa-calendar"></i><span class="mobile-visibility">BOOK NOW</span></a></div></td>
+          </tr>
+          {{-- <tr class="table-products-list pos-center">
+            <td class="products-image-table" style="padding-top:0px"><img alt="Products Image 1" src="theme/temp/room-image-5.jpg" class="img-responsive"></td>
+            <td class="title-table">
+              <div class="room-details-list clearfix">
+                <div class="pull-left">
+                  <h5>Suit Room</h5>
+                </div>
+                <div class="pull-left room-rating">
+                  <ul>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star inactive"></i></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="list-room-icons clearfix">
+                <ul>
+                  <li><i class="fa fa-calendar"></i></li>
+                  <li><i class="fa fa-flask"></i></li>
+                  <li><i class="fa fa-umbrella"></i></li>
+                  <li><i class="fa fa-laptop"></i></li>
+                </ul>
+              </div>
+              <p>Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque orla porta felis euismodnean eu at ero <a class="active-color" href="#">[...]</a> </p>
+            </td>
+            <td><h3>70$</h3></td>
+            <td><div  class="button-style-1" style="padding-bottom:40px"><a href="#"><i class="fa fa-calendar"></i><span class="mobile-visibility">BOOK NOW</span></a></div></td>
+          </tr>
+          <tr class="table-products-list pos-center">
+            <td class="products-image-table" style="padding-top:0px"><img alt="Products Image 2" src="theme/temp/room-image-6.jpg" class="img-responsive"></td>
+            <td class="title-table">
+              <div class="room-details-list clearfix">
+                <div class="pull-left">
+                  <h5>Suit Room</h5>
+                </div>
+                <div class="pull-left room-rating">
+                  <ul>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star inactive"></i></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="list-room-icons clearfix">
+                <ul>
+                  <li><i class="fa fa-calendar"></i></li>
+                  <li><i class="fa fa-flask"></i></li>
+                  <li><i class="fa fa-umbrella"></i></li>
+                  <li><i class="fa fa-laptop"></i></li>
+                </ul>
+              </div>
+              <p>Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque orla porta felis euismodnean eu at ero <a class="active-color" href="#">[...]</a> </p>
+            </td>
+            <td><h3>70$</h3></td>
+            <td><div  class="button-style-1" style="padding-bottom:40px"><a href="#"><i class="fa fa-calendar"></i><span class="mobile-visibility">BOOK NOW</span></a></div></td>
+          </tr> --}}
+        </table>
+      </div>
+      <div class="col-lg-3"><!-- Sidebar -->
+        <div class="quick-reservation-container">
+          <div class="quick-reservation clearfix">
+            <div class="title-quick pos-center margint30">
+              <h5>QUICK RESERVATIONS</h5>
+              <div class="line"></div>
+            </div>
+            <div class="reserve-form-area">
+              <form action="#" method="post" id="ajax-reservation-form">
+                <label>ARRIVAL</label>
+                <input type="text" id="dpd1" name="dpd1" class="date-selector" placeholder="&#xf073;" />
+                <label>RETURN</label>
+                <input type="text" id="dpd2" name="dpd2" class="date-selector" placeholder="&#xf073;" />
+                <div class="pull-left children clearfix">
+                  <label>ROOMS</label>
+                  <select name="rooms" class="pretty-select">
+                    <option selected="selected" value="1" >1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <div class="pull-left type clearfix">
+                  <label>ADULT</label>
+                  <select name="adult" class="pretty-select">
+                    <option selected="selected" value="1" >1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div>
+                <div class="pull-left rooms clearfix">
+                  <label>CHILDREN</label>
+                  <select name="children" class="pretty-select">
+                    <option selected="selected" value="0" >0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <div class="pull-left search-button clearfix">
+                  <div  class="button-style-1" style="padding-bottom:40px">
+                    <a id="res-submit" href="#">SEARCH</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="luxen-widget news-widget">
+          <div class="title-quick marginb20">
+            <h5>HOTEL INFORMATION</h5>
+          </div>
+          <p>Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Lorem ipsumero, a pharetra augue. Lorem ipsum dolor sit amet, consectedui.</p>
+        </div>
+        <div class="luxen-widget news-widget">
+          <div class="title">
+            <h5>CONTACT</h5>
+          </div>
+          <ul class="footer-links">
+            <li><p><i class="fa fa-map-marker"></i> Lorem ipsum dolor sit amet lorem Victoria 8011 Australia </p></li>
+            <li><p><i class="fa fa-phone"></i> +61 3 8376 6284 </p></li>
+            <li><p><i class="fa fa-envelope"></i> info@2035themes.com</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

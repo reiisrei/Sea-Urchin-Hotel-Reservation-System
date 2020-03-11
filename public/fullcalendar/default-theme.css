@@ -1,0 +1,17 @@
+.title_details,
+.btn, .btn-large,
+.active_filter{
+	background-color: #383838;
+}
+h4.lowest-rate,
+.room-name,
+.reservation_cost span {
+    color: darkorange;
+}
+.card.sticky-action .ribbon{
+	background: red;
+    color: #fff;
+}
+span.badge.new{
+	    background-color: #26a69a;
+}
