@@ -14,7 +14,7 @@ class CreateRoomReservedsTable extends Migration
     public function up()
     {
         Schema::create('room_reserveds', function (Blueprint $table) {
-
+            $table->increments('roomReservedID');
             $table->integer('reservationID')->unsigned();
             $table->integer('roomID')->unsigned();
             $table->timestamps();
