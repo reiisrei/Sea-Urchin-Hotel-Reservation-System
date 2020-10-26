@@ -21,6 +21,7 @@ class CreateBookingsTable extends Migration
             $table->integer('n_person');
             $table->integer('amenityID')->unsigned()->nullable();
             $table->integer('paymentID')->unsigned();
+            $table->integer('roomTypeID')->unsigned();
             $table->integer('numNights');
             $table->date('bookExpire');
             $table->boolean('unread')->default(1);
