@@ -22,6 +22,7 @@ class CreateReservationsTable extends Migration
             $table->string('status', 20);
             $table->DateTime('actualCheckIn')->nullable();
             $table->DateTime('actualCheckOut')->nullable();
+             $table->integer('roomReservedID')->unsigned();
             $table->mediumText('comment')->nullable();
             $table->mediumText('message')->nullable();
             $table->timestamps();
